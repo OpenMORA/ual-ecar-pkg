@@ -1,0 +1,42 @@
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	
+	//crucial processes
+	Run = MOOSDB        @  NewConsole = false
+
+	Run = eCarOdometry  @       NewConsole=false
+	
+	// Optional logger:
+	// Run = pLogger  @       NewConsole=false
+}
+
+ProcessConfig = MOOSDB 
+{
+	// Enable webserver in MOOSDB
+	WEBSERVERPORT  = 9080
+
+}
+
+
+//------------------------------------------
+// eCarOdometry configuration block
+
+ProcessConfig = eCarOdometry
+{
+	CommsTick  = 100
+	AppTick    = 100
+	MaxAppTick = 1000
+	
+	// Ticks to meters constant for left wheel encoders.
+	left_K	  = 0.01
+	
+	// Ticks to meters constant for right wheel encoders.
+	right_K	  = 0.01
+	
+	// Wheel-to-wheel distance (meters)
+	wheels_dist	 = 2.0	
+	
+}
+

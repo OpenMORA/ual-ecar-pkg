@@ -21,6 +21,6 @@ MORA_COMMON_CMAKE() # Set common CMake options
 
 # Add modules (dir names match modules' by default)
 DEFINE_MORA_PROGRAM(Claraquino)
-
-
+DEFINE_MORA_PROGRAM(eCarOdometry)
+DEFINE_MORA_PROGRAM(SteerControllerLowLevel)
 
