@@ -1,0 +1,31 @@
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	
+	Run = pScheduler
+}
+
+//------------------------------------------
+// pScheduler configuration block
+
+ProcessConfig = pScheduler
+{
+	// Auto_pos=0 -> Enable PWM mode (disable controller)
+	SEQUENCE = STEERCONTROL_AUTO_POS : 0 @ 0.0
+	SEQUENCE = STEERCONTROL_PWM : 0.0 @ 0.0
+
+	SEQUENCE = STEERCONTROL_CLUTCH : 1.0 @ 1.0
+
+	SEQUENCE = STEERCONTROL_PWM : -0.9 @ 2.0
+	SEQUENCE = STEERCONTROL_PWM : -0.9 @ 3.0
+	SEQUENCE = STEERCONTROL_PWM : 0.0 @ 4.0
+	SEQUENCE = STEERCONTROL_PWM : 0.9 @ 5.0
+	SEQUENCE = STEERCONTROL_PWM : 0.9 @ 6.0
+	SEQUENCE = STEERCONTROL_PWM : 0.0 @ 7.0
+
+//
+
+	SEQUENCE = STEERCONTROL_CLUTCH : 0.0 @ 8.0
+}	
+

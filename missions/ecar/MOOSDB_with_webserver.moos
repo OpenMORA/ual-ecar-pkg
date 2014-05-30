@@ -1,0 +1,14 @@
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	
+	//crucial processes
+	Run = MOOSDB        @  NewConsole = false
+}
+
+ProcessConfig = MOOSDB 
+{
+	// Enable webserver in MOOSDB
+	WEBSERVERPORT  = 9080
+}

@@ -1,0 +1,32 @@
+/////////////////////////////////////////////////////////////////////////////
+// Antler configuration  block
+/////////////////////////////////////////////////////////////////////////////
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+//	ExecutablePath		= /home/jlblanco/code/momr-release/bin
+	
+	Run = GenericSensor       @       NewConsole=false ~ LASER1
+}
+
+ProcessConfig = LASER1
+{
+	CommsTick = 100
+	AppTick = 100
+	
+	driver			= CSickLaserUSB
+	process_rate    = 100		// Hz
+
+	sensorLabel  	= SICK_FRONT_OBS
+	pose_x			= 2.0	 // Laser range scaner 3D position in the robot (meters)
+	pose_y			= 0
+	pose_z			= 0.40
+	pose_yaw		= 0  	// Angles in degrees
+	pose_pitch		= 0
+	pose_roll		= 0
+	
+	SICKUSB_serialNumber = LASER001
+	
+}
+

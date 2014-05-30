@@ -1,0 +1,35 @@
+/////////////////////////////////////////////////////////////////////////////
+// Antler configuration  block
+/////////////////////////////////////////////////////////////////////////////
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	//ExecutablePath		= /home/ual/code/ecar-build/bin/
+	
+	Run = IMU_XSens       @       NewConsole=false
+}
+
+ProcessConfig = IMU_XSens
+{
+	SERVERHOST = 10.0.0.1
+
+	CommsTick = 200
+	AppTick = 200
+	
+	// If a portname is not provided, the first found device will be opened:
+	//portname_LIN	= USB002:005
+	//portname_WIN	= \\?\usb#vid_2639&pid_0013#037000a6#{fd51225c-700a-47e5-9999-b2d9031b88ed}
+	//baudRate	    = 115200             ; Baudrate for communicating, 
+
+	sensorLabel  		= XSensMTi300
+
+	pose_x			= 0	// 3D position on the car (meters)
+	pose_y			= 0
+	pose_z			= 0
+	pose_yaw		= 0	// Angles in degrees
+	pose_pitch		= 0
+	pose_roll		= 0
+
+}
+

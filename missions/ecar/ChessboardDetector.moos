@@ -1,0 +1,24 @@
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	
+	Run = ChessboardDetector
+}
+
+//------------------------------------------
+// ChessboardDetector configuration block
+
+ProcessConfig = ChessboardDetector
+{
+	CommsTick  = 50
+	AppTick    = 50
+	
+	// (Default="STEREO1_OBS") The name of the variable with the input stream of stereo images (they must be rectified)
+	STEREO_INPUT = STEREO1_OBS
+	
+	CHESSBOARD_NX   = 4     // (Mandatory) Chessboard params: number of corners in X
+	CHESSBOARD_NY   = 3     // (Mandatory) Chessboard params: number of corners in Y
+	CHESSBOARD_LX   = 0.132   // (Mandatory) Chessboard params: distance betwwen squares in Y (in meters)
+	CHESSBOARD_LY   = 0.132   // (Mandatory) Chessboard params: distance betwwen squares in X (in meters)
+}

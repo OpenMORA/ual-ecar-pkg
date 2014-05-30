@@ -1,0 +1,27 @@
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	
+	Run = SteerControllerLowLevel  @       NewConsole=false
+}
+
+//------------------------------------------
+// SteerControllerLowLevel configuration block
+
+ProcessConfig = SteerControllerLowLevel
+{
+	CommsTick  = 1200
+	AppTick    = 1200
+	MaxAppTick = 1200
+
+	// The serial port to connect to:
+	SERIAL_PORT_WIN  = COM11
+	SERIAL_PORT_LIN  = /dev/ttySteerController
+
+	SERIAL_PORT_BAUDRATE = 1000000
+	
+	// (Default=50) The desired frequency (Hz) for steering column state
+	STEERPOS_STATUS_FREQ = 2000
+}
+

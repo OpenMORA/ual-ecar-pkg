@@ -1,0 +1,19 @@
+# UDEV-style hotplug map for MAPIR devices to 
+#   have proper permissions
+#
+# Put this file in /etc/udev/rules.d
+#
+#  J.L. Blanco, DEC/2009
+# ---------------------------------------
+
+# SICK-USB v2-v3
+ATTR{idVendor}=="0403", ATTR{idProduct}=="6001", MODE="666"
+
+# Claraquino:
+KERNEL=="ttyUSB*", KERNELS=="5-1:1.0", SYMLINK+="ttyClaraquino"
+
+# SteerControl:
+KERNEL=="ttyUSB*", KERNELS=="2-3.1:1.0", SYMLINK+="ttySteerController"
+
+
+

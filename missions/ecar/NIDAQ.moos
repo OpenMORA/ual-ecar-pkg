@@ -1,0 +1,55 @@
+/////////////////////////////////////////////////////////////////////////////
+// Antler configuration  block
+/////////////////////////////////////////////////////////////////////////////
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	//ExecutablePath		= /home/ual/code/ecar-build/bin/
+	
+	Run = NIDAQ       @       NewConsole=false
+	Run = ScopeLogger       @       NewConsole=false
+}
+
+ProcessConfig = ScopeLogger
+{
+SERVERHOST = 10.0.0.1
+}
+
+ProcessConfig = NIDAQ
+{
+SERVERHOST = 10.0.0.1
+
+	CommsTick = 500
+	AppTick = 500
+	
+	# Number of tasks (each will run in a thread). Task indices are 0-based.
+	# (Parameters below follow NI's DAQmx API notation)
+	num_tasks  = 1
+
+	# Channels, separated by commas if more than one.
+	#  - "ai": Analog inputs
+	#  - "ao": Analog outputs
+	#  - "di": Digital inputs
+	#  - "do": Digital inputs
+	#  - "ci_period", 
+	#    "ci_count_edges", "ci_pulse_width",
+	#    "ci_lin_encoder", "ci_ang_encoder" : Counters & encoders (WARNING: NI says "a task can include only one counter input channel")
+	#  - "co_pulses": Output digital pulses (WARNING: NI says "a task can include only one counter output channel")
+	#
+	# TASK 0 Analogicas
+	task0.channels = ai  //, ao, di, do, ci_ang_encoder
+	task0.taskLabel= analogicas     // Optional textual label to build the CObservation sensor label (default: task number)
+	task0.samplesPerSecond = 1000 // Samples per second. Continuous (infinite) sampling is assumed.
+	task0.samplesPerChannelToRead = 100  // The number of samples to grab at once from each channel.
+	ask0.bufferSamplesPerChannel = 200000 // Increase if you have errors about " Onboard device memory overflow.(...)"
+	 
+	; Analog input channel params. 
+	task0.ai.physicalChannel = Dev2/ai0:7
+	task0.ai.physicalChannelCount = 8  // *IMPORTANT* This must be the total number of channels listed in "physicalChannel" (e.g. 4 for "Dev1/ai0:3")
+	task0.ai.terminalConfig  =  DAQmx_Val_Diff // DAQmx_Val_Cfg_Default | DAQmx_Val_RSE | DAQmx_Val_NRSE | DAQmx_Val_Diff   // One of these strings
+	task0.ai.minVal          = -10.0    // Volts. 
+	task0.ai.maxVal          =  10.0    // Volts. Maximum allowed.
+
+}
+

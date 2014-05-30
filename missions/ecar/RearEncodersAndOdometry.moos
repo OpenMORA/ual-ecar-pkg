@@ -1,0 +1,69 @@
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	
+	Run = PhidgetsEncoders  @       NewConsole=false	
+	Run = eCarOdometry  @       NewConsole=false
+	Run = ScopeLogger       @       NewConsole=false
+}
+
+//------------------------------------------
+// PhidgetsEncoders configuration block
+
+ProcessConfig = PhidgetsEncoders
+{
+	CommsTick  = 100
+	AppTick    = 100
+	MaxAppTick = 1000
+	
+	// (Default="ENC1") Encoder data from this board will be published as "<ENCODER_PUBLISH_PREFIX>_CH_{COUNT,INSTANT_VEL}" with i=0,1,2,3 for each encoder channel.
+	ENCODER_PUBLISH_PREFIX	 = ENC1
+	
+	// (Default=-1) The serial number of the Phidgets encoder: the number in the "S/N" sticker (or "-1" to open the first board found).
+	// ENCODER_SERIAL	 = -1
+
+	// (Default=10) Number of samples for the sliding window average filter of speeds.	
+	SPEED_FILTER_SAMPLES_LEN  = 10
+
+	SPEED_FILTER_IDLE_ITER_LOOPS_BEFORE_RESET = 10
+}
+
+
+//------------------------------------------
+// eCarOdometry configuration block
+
+ProcessConfig = eCarOdometry
+{
+	CommsTick  = 100
+	AppTick    = 100
+	MaxAppTick = 1000
+	
+	// Ticks to meters constant for left wheel encoders.
+	left_K	  = 1.3028e-04  //  
+
+	// Ticks to meters constant for right wheel encoders.
+	right_K	  = -1.2795e-04
+	
+	// Wheel-to-wheel distance (meters)
+	wheels_dist	 = 1.23    //1.28
+	// 1.23: Calculado encajando un gran cierre de bucle
+  
+	// Debug info to console:
+	odometry_verbose  = true
+// Teoricas: Jero JLT. Verificadas en nave
+// iL=12/110; % relacion de transmision izq
+// iR=12/112; % relacion de transmision dch
+// ticksL=360*4; %resolución 360, codificacion X4
+// ticksR=360*4; %resolución 360, codificacion X4
+// r_wheel = 0.2737; % radio de la rueda experimental [m]
+// b = 1.280; % distancia entre ruedas de centro a centro [m]
+// KL = iL*2*pi*r_wheel/ticksL;
+// KR = iR*2*pi*r_wheel/ticksR;
+
+}
+ProcessConfig = ScopeLogger
+{
+//SERVERHOST = 10.0.0.1
+}
+

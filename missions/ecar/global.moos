@@ -1,0 +1,105 @@
+/////////////////////////////////////////////////////////////////////////////
+// Antler configuration  block
+/////////////////////////////////////////////////////////////////////////////
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	//ExecutablePath		= /home/ual/code/ecar-build/bin/
+	
+	Run = NIDAQ       @       NewConsole=false
+	//Run = ScopeLogger       @       NewConsole=false
+	Run = IMU_XSens       @       NewConsole=false
+	Run = GenericSensor       @       NewConsole=false ~ GPS1
+}
+
+/////////////////// Lanza el scopelogger en el host ///////////////////////////////
+ProcessConfig = ScopeLogger
+{
+SERVERHOST = 10.0.0.1
+}
+/////////////////// Lanza la DAQ ///////////////////////////////
+ProcessConfig = NIDAQ
+{
+SERVERHOST = 10.0.0.1
+
+	CommsTick = 500
+	AppTick = 500
+	
+	# Number of tasks (each will run in a thread). Task indices are 0-based.
+	# (Parameters below follow NI's DAQmx API notation)
+	num_tasks  = 1
+
+	# Channels, separated by commas if more than one.
+	#  - "ai": Analog inputs
+	#  - "ao": Analog outputs
+	#  - "di": Digital inputs
+	#  - "do": Digital inputs
+	#  - "ci_period", 
+	#    "ci_count_edges", "ci_pulse_width",
+	#    "ci_lin_encoder", "ci_ang_encoder" : Counters & encoders (WARNING: NI says "a task can include only one counter input channel")
+	#  - "co_pulses": Output digital pulses (WARNING: NI says "a task can include only one counter output channel")
+	#
+	# TASK 0 Analogicas
+	task0.channels = ai  //, ao, di, do, ci_ang_encoder
+	task0.taskLabel= analogicas     // Optional textual label to build the CObservation sensor label (default: task number)
+	task0.samplesPerSecond = 1000 // Samples per second. Continuous (infinite) sampling is assumed.
+	task0.samplesPerChannelToRead = 100  // The number of samples to grab at once from each channel.
+	ask0.bufferSamplesPerChannel = 200000 // Increase if you have errors about " Onboard device memory overflow.(...)"
+	 
+	; Analog input channel params. 
+	task0.ai.physicalChannel = Dev2/ai0:15
+	task0.ai.physicalChannelCount = 16  // antes 8 (JLt) *IMPORTANT* This must be the total number of channels listed in "physicalChannel" (e.g. 4 for "Dev1/ai0:3")
+	task0.ai.terminalConfig  =  DAQmx_Val_RSE // DAQmx_Val_Cfg_Default | DAQmx_Val_RSE | DAQmx_Val_NRSE | DAQmx_Val_Diff   // One of these strings
+	task0.ai.minVal          = -10.0    // Volts. 
+	task0.ai.maxVal          =  10.0    // Volts. Maximum allowed.
+
+}
+/////////////////// Lanza el IMU ///////////////////////////////
+
+ProcessConfig = IMU_XSens
+{
+	SERVERHOST = 10.0.0.1
+
+	CommsTick = 200
+	AppTick = 200
+	
+	// If a portname is not provided, the first found device will be opened:
+	//portname_LIN	= USB002:005
+	//portname_WIN	= \\?\usb#vid_2639&pid_0013#037000a6#{fd51225c-700a-47e5-9999-b2d9031b88ed}
+	//baudRate	    = 115200             ; Baudrate for communicating, 
+
+	sensorLabel  		= XSensMTi300
+
+	pose_x			= 0	// 3D position on the car (meters)
+	pose_y			= 0
+	pose_z			= 0
+	pose_yaw		= 0	// Angles in degrees
+	pose_pitch		= 0
+	pose_roll		= 0
+
+}
+/////////////////// Lanza el GPS ///////////////////////////////
+ProcessConfig = GPS1
+{
+	SERVERHOST = 10.0.0.1
+	CommsTick = 10
+	AppTick = 10
+	
+	driver        = CGPSInterface
+	process_rate  = 10		// Hz
+	sensorLabel     = GPS_OBS
+
+	//COM_port_WIN = COM3
+	COM_port_WIN = COM5 // PC-Industrial
+	COM_port_LIN = ttyUSB2
+
+	baudRate     = 9600   // The baudrate of the communications (typ. 4800 bauds)
+
+	pose_x			= 0	   // Sensor position in the robot (meters)
+	pose_y			= 0
+	pose_z			= 0
+	
+}
+
+

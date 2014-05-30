@@ -1,0 +1,17 @@
+/////////////////////////////////////////////////////////////////////////////
+// Antler configuration  block
+/////////////////////////////////////////////////////////////////////////////
+
+ProcessConfig = ANTLER
+{
+	MSBetweenLaunches 	= 200
+	//ExecutablePath		= /home/ual/code/ecar-build/bin/
+	
+	Run = ScopeLogger       @       NewConsole=false
+}
+
+ProcessConfig = ScopeLogger
+{
+SERVERHOST = 10.0.0.1
+}
+
