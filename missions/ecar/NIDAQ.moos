@@ -25,7 +25,7 @@ SERVERHOST = 10.0.0.1
 	
 	# Number of tasks (each will run in a thread). Task indices are 0-based.
 	# (Parameters below follow NI's DAQmx API notation)
-	num_tasks  = 1
+	num_tasks  = 7
 
 	# Channels, separated by commas if more than one.
 	#  - "ai": Analog inputs
@@ -37,7 +37,8 @@ SERVERHOST = 10.0.0.1
 	#    "ci_lin_encoder", "ci_ang_encoder" : Counters & encoders (WARNING: NI says "a task can include only one counter input channel")
 	#  - "co_pulses": Output digital pulses (WARNING: NI says "a task can include only one counter output channel")
 	#
-	# TASK 0 Analogicas
+	# ======= TASK #0 ======= Analog inputs
+	# Published as 
 	task0.channels = ai  //, ao, di, do, ci_ang_encoder
 	task0.taskLabel= analogicas     // Optional textual label to build the CObservation sensor label (default: task number)
 	task0.samplesPerSecond = 1000 // Samples per second. Continuous (infinite) sampling is assumed.
@@ -51,5 +52,37 @@ SERVERHOST = 10.0.0.1
 	task0.ai.minVal          = -10.0    // Volts. 
 	task0.ai.maxVal          =  10.0    // Volts. Maximum allowed.
 
+	
+	# ======= TASK #1 ======= Analog output #0
+	# Subscribed as DAQ_AO_TASK0
+	task1.ao.physicalChannel = Dev2/ao0
+	task1.ao.physicalChannelCount = 1  // *IMPORTANT* This must be the total number of channels listed in "physicalChannel" (e.g. 1 for "Dev1/ao0")
+	task1.ao.minVal          = -10.0    // Volts
+	task1.ao.maxVal          =  10.0    // Volts
+
+	# ======= TASK #2 ======= Analog output #1
+	# Subscribed as DAQ_AO_TASK1
+	task2.ao.physicalChannel = Dev2/ao1
+	task2.ao.physicalChannelCount = 1  // *IMPORTANT* This must be the total number of channels listed in "physicalChannel" (e.g. 1 for "Dev1/ao0")
+	task2.ao.minVal          = -10.0    // Volts
+	task2.ao.maxVal          =  10.0    // Volts
+	
+	
+	# ======= TASK #3 ======= Digital output #0
+	# Subscribed as DAQ_DO_TASK0
+	task3.do.line           = Dev2/port1/line0
+	
+	# ======= TASK #4 ======= Digital output #0
+	# Subscribed as DAQ_DO_TASK0
+	task4.do.line           = Dev2/port1/line1
+	
+	# ======= TASK #5 ======= Digital output #0
+	# Subscribed as DAQ_DO_TASK0
+	task5.do.line           = Dev2/port1/line2
+	
+	# ======= TASK #6 ======= Digital output #0
+	# Subscribed as DAQ_DO_TASK0
+	task6.do.line           = Dev2/port1/line3	
+	
 }
 
