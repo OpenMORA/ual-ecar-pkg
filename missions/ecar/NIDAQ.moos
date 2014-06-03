@@ -8,17 +8,17 @@ ProcessConfig = ANTLER
 	//ExecutablePath		= /home/ual/code/ecar-build/bin/
 	
 	Run = NIDAQ       @       NewConsole=false
-	Run = ScopeLogger       @       NewConsole=false
+	//Run = ScopeLogger       @       NewConsole=false
 }
 
 ProcessConfig = ScopeLogger
 {
-SERVERHOST = 10.0.0.1
+//SERVERHOST = 10.0.0.1
 }
 
 ProcessConfig = NIDAQ
 {
-SERVERHOST = 10.0.0.1
+//SERVERHOST = 10.0.0.1
 
 	CommsTick = 500
 	AppTick = 500
@@ -55,6 +55,7 @@ SERVERHOST = 10.0.0.1
 	
 	# ======= TASK #1 ======= Analog output #0
 	# Subscribed as DAQ_AO_TASK0
+	task1.channels = ao
 	task1.ao.physicalChannel = Dev2/ao0
 	task1.ao.physicalChannelCount = 1  // *IMPORTANT* This must be the total number of channels listed in "physicalChannel" (e.g. 1 for "Dev1/ao0")
 	task1.ao.minVal          = -10.0    // Volts
@@ -62,6 +63,7 @@ SERVERHOST = 10.0.0.1
 
 	# ======= TASK #2 ======= Analog output #1
 	# Subscribed as DAQ_AO_TASK1
+	task2.channels = ao
 	task2.ao.physicalChannel = Dev2/ao1
 	task2.ao.physicalChannelCount = 1  // *IMPORTANT* This must be the total number of channels listed in "physicalChannel" (e.g. 1 for "Dev1/ao0")
 	task2.ao.minVal          = -10.0    // Volts
@@ -70,18 +72,22 @@ SERVERHOST = 10.0.0.1
 	
 	# ======= TASK #3 ======= Digital output #0
 	# Subscribed as DAQ_DO_TASK0
+	task3.channels = do
 	task3.do.line           = Dev2/port1/line0
 	
 	# ======= TASK #4 ======= Digital output #0
 	# Subscribed as DAQ_DO_TASK0
+	task4.channels = do
 	task4.do.line           = Dev2/port1/line1
 	
 	# ======= TASK #5 ======= Digital output #0
 	# Subscribed as DAQ_DO_TASK0
+	task5.channels = do
 	task5.do.line           = Dev2/port1/line2
 	
 	# ======= TASK #6 ======= Digital output #0
 	# Subscribed as DAQ_DO_TASK0
+	task6.channels = do
 	task6.do.line           = Dev2/port1/line3	
 	
 }
