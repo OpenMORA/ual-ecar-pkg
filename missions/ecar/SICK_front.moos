@@ -19,7 +19,7 @@ ProcessConfig = LASER1
 	process_rate    = 100		// Hz
 
 	sensorLabel  	= SICK_FRONT_OBS
-	pose_x			= 2.0	 // Laser range scaner 3D position in the robot (meters)
+	pose_x			= 2.3	 // Laser range scaner 3D position in the robot (meters)
 	pose_y			= 0
 	pose_z			= 0.40
 	pose_yaw		= 0  	// Angles in degrees
