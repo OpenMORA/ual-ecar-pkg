@@ -73,22 +73,22 @@ ProcessConfig = NIDAQ
 	# ======= TASK #3 ======= Digital output #0
 	# Subscribed as DAQ_DO_TASK0
 	task3.channels = do
-	task3.do.line           = Dev2/port1/line0
+	task3.do.line           = Dev2/port0/line0
 	
-	# ======= TASK #4 ======= Digital output #0
-	# Subscribed as DAQ_DO_TASK0
+	# ======= TASK #4 ======= Digital output #1
+	# Subscribed as DAQ_DO_TASK1
 	task4.channels = do
-	task4.do.line           = Dev2/port1/line1
+	task4.do.line           = Dev2/port0/line1
 	
-	# ======= TASK #5 ======= Digital output #0
-	# Subscribed as DAQ_DO_TASK0
+	# ======= TASK #5 ======= Digital output #2
+	# Subscribed as DAQ_DO_TASK2
 	task5.channels = do
-	task5.do.line           = Dev2/port1/line2
+	task5.do.line           = Dev2/port0/line2
 	
-	# ======= TASK #6 ======= Digital output #0
-	# Subscribed as DAQ_DO_TASK0
+	# ======= TASK #6 ======= Digital output #3
+	# Subscribed as DAQ_DO_TASK3
 	task6.channels = do
-	task6.do.line           = Dev2/port1/line3	
+	task6.do.line           = Dev2/port0/line3	
 	
 }
 
