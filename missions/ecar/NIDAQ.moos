@@ -13,12 +13,12 @@ ProcessConfig = ANTLER
 
 ProcessConfig = ScopeLogger
 {
-//SERVERHOST = 10.0.0.1
+SERVERHOST = 10.0.0.1
 }
 
 ProcessConfig = NIDAQ
 {
-//SERVERHOST = 10.0.0.1
+SERVERHOST = 10.0.0.1
 
 	CommsTick = 500
 	AppTick = 500

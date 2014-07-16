@@ -12,6 +12,8 @@ ProcessConfig = ANTLER
 
 ProcessConfig = LASER1
 {
+	SERVERHOST = 10.0.0.1
+
 	CommsTick = 100
 	AppTick = 100
 	
