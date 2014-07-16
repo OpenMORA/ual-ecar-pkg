@@ -18,8 +18,8 @@ ProcessConfig = IMU_XSens
 	AppTick = 200
 	
 	// If a portname is not provided, the first found device will be opened:
-	portname_LIN	= /dev/ttyUSB4
-	//portname_WIN	= \\?\usb#vid_2639&pid_0013#037000a6#{fd51225c-700a-47e5-9999-b2d9031b88ed}
+	//portname_LIN	= /dev/ttyUSB2
+	portname_WIN	= \\?\usb#vid_2639&pid_0013#037000a6#{fd51225c-700a-47e5-9999-b2d9031b88ed}
 	baudRate	    = 115200             ; Baudrate for communicating, 
 
 	sensorLabel  		= XSensMTi300

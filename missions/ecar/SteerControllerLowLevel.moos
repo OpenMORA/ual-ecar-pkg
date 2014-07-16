@@ -17,7 +17,8 @@ ProcessConfig = SteerControllerLowLevel
 
 	// The serial port to connect to:
 	SERIAL_PORT_WIN  = COM11
-	SERIAL_PORT_LIN  = /dev/ttySteerController
+#	SERIAL_PORT_LIN  = /dev/ttySteerController
+	SERIAL_PORT_LIN  = /dev/ttyUSB4
 
 	SERIAL_PORT_BAUDRATE = 1000000
 	

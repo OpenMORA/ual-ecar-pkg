@@ -20,8 +20,8 @@ ProcessConfig = GPS1
 	sensorLabel     = GPS_OBS
 
 	//COM_port_WIN = COM3
-	COM_port_WIN = COM5 // PC-Industrial
-	COM_port_LIN = ttyUSB2
+	//COM_port_WIN = COM5 // PC-Industrial
+	COM_port_LIN = ttyUSB0
 
 	baudRate     = 9600   // The baudrate of the communications (typ. 4800 bauds)
 
